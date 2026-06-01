@@ -1,0 +1,7 @@
+/*
+!.gitignore
+!kubejs
+!kubejs/*
+*jsconfig.json
+kubejs/package.json
+probe-settings.json

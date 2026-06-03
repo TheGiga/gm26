@@ -63,11 +63,12 @@ ServerEvents.recipes(event => {
         '#c:ingots/brass'
     )
 
-    /*event.replaceInput(
+    // make circuits use TR basic circuit as base
+    event.replaceInput(
       {output: '#c:circuits/basic', type: 'mekanism:metallurgic_infusing'},
       'mekanism:ingot_osmium',
       'techreborn:electronic_circuit'
-    )*/
+    )
 
     // custom mek base machine crafts
     event.remove({ output: 'mekanism:metallurgic_infuser' })
@@ -181,4 +182,14 @@ ServerEvents.recipes(event => {
         input: { tag: 'c:ores/certus_quartz' },
         output: { id: 'ae2:certus_quartz_crystal', count: 6 }
     })
+
+    // remove duplicate crushing certus dust
+    event.remove({ id: 'jaopca:mekanism.material_to_dust.certus_quartz' })
+
+    // incorporate tech reborn fusion coils into mekanism fusion reactor craft somewhat
+    event.replaceInput(
+        { output: 'mekanismgenerators:fusion_reactor_frame' },
+        'mekanism:steel_casing',
+        'techreborn:fusion_coil'
+    )
 })

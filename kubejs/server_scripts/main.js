@@ -5,6 +5,11 @@ think about ways to gate TR a bit more behind some Create stuff, Crafts and Addi
 sulfur dust recipe from sulfur that generated with Vanilla Backport (?)
 
 electric motor and alternator better recipes
+
+harder matter fabricator recipe
+
+harder nano saber recipe
+
 */
 
 // remove OP tech reborn villagers
@@ -29,6 +34,10 @@ RecipeViewerEvents.removeEntries('item', event => {
 	global.if_generators.forEach(item => {
 		event.remove(item)
 	})
+})
+
+RecipeViewerEvents.removeCategories(event => {
+	event.remove('industrialforegoing:mycellial_meatallurgic')
 })
 
 RecipeViewerEvents.addInformation('item', event => {

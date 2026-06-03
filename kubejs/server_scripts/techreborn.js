@@ -5,6 +5,13 @@ ServerEvents.recipes(event => {
         'techreborn:cell'
     )
 
+    // replace refined iron ingot with osmium in circuit recipe
+    event.replaceInput(
+        { output: 'techreborn:electronic_circuit'},
+        '#c:ingots/refined_iron',
+        '#c:ingots/osmium'
+    )
+
     // better andesite alloy recipe
     event.recipes.techreborn.alloy_smelter({
         power: 10,
@@ -18,29 +25,7 @@ ServerEvents.recipes(event => {
         ]
     })
 
-    // create sheets compressor recipes
-    event.recipes.techreborn.compressor({
-        power: 10,
-        time: 200,
-        ingredients: [
-            { item: "create:andesite_alloy" }
-        ],
-        outputs: [
-            { id: "createdeco:andesite_sheet", count: 1 }
-        ]
-    })
-
-    event.recipes.techreborn.compressor({
-        power: 10,
-        time: 200,
-        ingredients: [
-            { item: "createdeco:industrial_iron_ingot" }
-        ],
-        outputs: [
-            { id: "createdeco:industrial_iron_sheet", count: 1 }
-        ]
-    })
-
+    // create cardboard compressor recipe
     event.recipes.techreborn.compressor({
         power: 3,
         time: 50,
@@ -49,6 +34,18 @@ ServerEvents.recipes(event => {
         ],
         outputs: [
             { id: "create:cardboard", count: 1 }
+        ]
+    })
+
+    // silicon plate with ae2 silicon
+    event.recipes.techreborn.compressor({
+        power: 7,
+        time: 150,
+        ingredients: [
+            { tag: "c:silicon" },
+        ],
+        outputs: [
+            { id: "techreborn:silicon_plate", count: 1 }
         ]
     })
 
@@ -142,6 +139,22 @@ ServerEvents.recipes(event => {
         result: { id: "create:brass_casing", count: 3 }
     })
 
+    // crushing wheel craft
+    event.recipes.techreborn.rolling_machine({
+        power: 7,
+        time: 175,
+        pattern: [
+            ' A ',
+            'ABA',
+            ' A '
+        ],
+        key: {
+            A: { item: 'create:andesite_alloy_block' },
+            B: { tag: 'c:stones' }
+        },
+        result: { id: "create:crushing_wheel", count: 2 }
+    })
+
     // rolling machine rods
     global.add_rolling_machine_rod_recipe(event, 'c:ingots/copper', 'createaddition:copper_rod')
     global.add_rolling_machine_rod_recipe(event, 'c:ingots/iron', 'createaddition:iron_rod')
@@ -185,13 +198,13 @@ ServerEvents.recipes(event => {
     event.shaped(
         Item.of('techreborn:grinder'),
         [
-            'ABA',
-            'ECE',
+            'AEA',
+            'BCB',
             'ADA'
         ],
         {
             A: '#c:plates/iron',
-            B: 'create:millstone',
+            B: 'create:crushing_wheel',
             C: 'techreborn:basic_machine_frame',
             D: 'create:depot',
             E: 'techreborn:electronic_circuit'
@@ -358,4 +371,23 @@ ServerEvents.recipes(event => {
             E: 'techreborn:lamp_led'
         }
     )
+
+    // remove fusion reactor in favor of mekanism (progression seems better this way)
+    event.remove({ output: 'techreborn:fusion_control_computer' })
+    event.remove({ type: 'techreborn:fusion_reactor' })
+    event.remove({ id: 'techreborn:centrifuge/hydrogen_cell' })
+    event.remove({ id: 'techreborn:centrifuge/deuterium_cell' })
+
+    // fix empty tag ae2 certus quartz dust in TR grinder
+    event.remove({ id: 'techreborn:grinder/certus_quartz_dust' })
+    event.recipes.techreborn.grinder({
+        power: 10,
+        time: 200,
+        ingredients: [
+            { tag: "c:gems/certus_quartz" }
+        ],
+        outputs: [
+            { id: "ae2:certus_quartz_dust", count: 1 }
+        ]
+    })
 })

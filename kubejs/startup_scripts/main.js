@@ -50,7 +50,8 @@ global.hide_in_emi_misc = [
     "industrialforegoing:mycelial_reactor",
     "industrialforegoing:infinity_charger",
     "techreborn:iron_alloy_furnace",
-    "techreborn:basic_solar_panel"
+    "techreborn:basic_solar_panel",
+    "techreborn:fusion_control_computer"
 ]
 
 global.solar_panels = [

@@ -187,9 +187,19 @@ ServerEvents.recipes(event => {
     event.remove({ id: 'jaopca:mekanism.material_to_dust.certus_quartz' })
 
     // incorporate tech reborn fusion coils into mekanism fusion reactor craft somewhat
-    event.replaceInput(
-        { output: 'mekanismgenerators:fusion_reactor_frame' },
-        'mekanism:steel_casing',
-        'techreborn:fusion_coil'
+    event.remove({ output: 'mekanismgenerators:fusion_reactor_controller'})
+    event.shaped(
+        Item.of('mekanismgenerators:fusion_reactor_controller'),
+        [
+            'ABA',
+            'CDC',
+            'CCC'
+        ],
+        {
+            A: '#c:circuits/ultimate',
+            B: 'techreborn:reinforced_glass',
+            C: 'mekanismgenerators:fusion_reactor_frame',
+            D: 'techreborn:fusion_coil'
+        }
     )
 })

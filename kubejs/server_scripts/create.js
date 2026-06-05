@@ -68,4 +68,77 @@ ServerEvents.recipes(event => {
             { id: "simulated:gyroscopic_mechanism", count: 1 }
         ]
     })
+
+    // alternator and electric motor crafts
+    event.recipes.techreborn.rolling_machine({
+        power: 20,
+        time: 360,
+        pattern: [
+            'ABA',
+            'BCB',
+            'ABA'
+        ],
+        key: {
+            A: { tag: 'c:plates/iron' },
+            B: { item: 'createaddition:copper_spool' },
+            C: { tag: 'c:rods/iron' }
+        },
+        result: { id: "createaddition:alternator", count: 1 }
+    })
+
+    event.recipes.techreborn.rolling_machine({
+        power: 20,
+        time: 360,
+        pattern: [
+            'ABA',
+            'BCB',
+            'ADA'
+        ],
+        key: {
+            A: { tag: 'c:plates/brass' },
+            B: { item: 'createaddition:copper_spool' },
+            C: { tag: 'c:rods/iron' },
+            D: { item: 'createaddition:capacitor'}
+        },
+        result: { id: "createaddition:electric_motor", count: 1 }
+    })
+
+    // brass casing easier recipe through TR
+    event.recipes.techreborn.rolling_machine({
+        power: 7,
+        time: 180,
+        pattern: [
+            ' A ',
+            'BAB',
+            ' A '
+        ],
+        key: {
+            A: { item: 'techreborn:wood_plate' },
+            B: { item: 'techreborn:brass_plate' }
+        },
+        result: { id: "create:brass_casing", count: 3 }
+    })
+
+    // crushing wheel craft
+    event.recipes.techreborn.rolling_machine({
+        power: 7,
+        time: 180,
+        pattern: [
+            ' A ',
+            'ABA',
+            ' A '
+        ],
+        key: {
+            A: { item: 'create:andesite_alloy_block' },
+            B: { tag: 'c:stones' }
+        },
+        result: { id: "create:crushing_wheel", count: 2 }
+    })
+
+    // rolling machine rods
+    global.add_rolling_machine_rod_recipe(event, 'c:ingots/copper', 'createaddition:copper_rod')
+    global.add_rolling_machine_rod_recipe(event, 'c:ingots/iron', 'createaddition:iron_rod')
+    global.add_rolling_machine_rod_recipe(event, 'c:ingots/gold', 'createaddition:gold_rod')
+    global.add_rolling_machine_rod_recipe(event, 'c:ingots/electrum', 'createaddition:electrum_rod')
+    global.add_rolling_machine_rod_recipe(event, 'c:ingots/brass', 'createaddition:brass_rod')
 })

@@ -4,12 +4,6 @@ think about ways to gate TR a bit more behind some Create stuff, Crafts and Addi
 
 sulfur dust recipe from sulfur that generated with Vanilla Backport (?)
 
-electric motor and alternator better recipes
-
-harder matter fabricator recipe
-
-harder nano saber recipe
-
 */
 
 // remove OP tech reborn villagers

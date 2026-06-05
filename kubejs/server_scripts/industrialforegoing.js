@@ -49,4 +49,10 @@ ServerEvents.recipes(event => {
         'industrialforegoing:dryrubber',
         'techreborn:rubber'
     )
+
+    event.replaceInput(
+        { output: 'industrialforegoing:mycelial_netherstar' },
+        'minecraft:redstone',
+        '#c:circuits/ultimate'
+    )
 })

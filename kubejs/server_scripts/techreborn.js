@@ -1,10 +1,4 @@
 ServerEvents.recipes(event => {
-    // cell recycling
-    event.shapeless(
-        'techreborn:cell',
-        'techreborn:cell'
-    )
-
     // replace refined iron ingot with osmium in circuit recipe
     event.replaceInput(
         { output: 'techreborn:electronic_circuit'},
@@ -112,7 +106,7 @@ ServerEvents.recipes(event => {
         ],
         {
             A: 'techreborn:ultimate_solar_panel',
-            B: 'techreborn:uu_matter',
+            B: '#c:circuits/ultimate',
         }
     )
 
@@ -378,6 +372,9 @@ ServerEvents.recipes(event => {
         'techreborn:helium_bucket',
         'techreborn:cell[techreborn:fluid="techreborn:helium"]'
     )
+
+    // remove plasma generator (heliumplasma isn't craftable, perhaps add a recipe via mek fission?)
+    event.remove({ output: 'techreborn:plasma_generator' })
 
     // fix empty tag ae2 certus quartz dust in TR grinderw
     event.remove({ id: 'techreborn:grinder/certus_quartz_dust' })

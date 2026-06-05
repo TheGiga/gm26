@@ -37,7 +37,13 @@ RecipeViewerEvents.removeCategories(event => {
 RecipeViewerEvents.addInformation('item', event => {
 	event.add(
 		Item.of('techreborn:cell'), [
-			"You can recycle any cell into an empty one in a shapeless 1 to 1 craft."
+			"You can recycle any cell into an empty one in an Extractor."
+		]
+	)
+
+	event.add(
+		Item.of('techreborn:uu_matter'), [
+			"Obtainable in Matter Fabricator by inputing significant amounts of energy."
 		]
 	)
 })

@@ -106,7 +106,7 @@ ServerEvents.recipes(event => {
         ],
         {
             A: 'techreborn:ultimate_solar_panel',
-            B: '#c:circuits/ultimate',
+            B: '#c:pellets/polonium',
         }
     )
 
